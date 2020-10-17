@@ -1,2 +1,2 @@
-# sample-mask
+# Sample mask
 C# audio masking tool.
