@@ -1,4 +1,5 @@
 using Sample_Mask.Modules;
+using System;
 
 namespace Sample_Mask
 {
@@ -10,6 +11,7 @@ namespace Sample_Mask
         /// <summary>
         /// Точка входа в программу
         /// </summary>
+        [STAThread]
         static void Main()
         {
             UI.Start();

@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sample-Mask</name>
+    </assembly>
+    <members>
+        <member name="T:Sample_Mask.Modules.DiscreteFourierTransformClass">
+            <summary>
+            Статический класс, реализующий алгоритмы прямого и обратного дискретного преобразования Фурье
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.DiscreteFourierTransformClass.DiscreteFourierTransform(System.Int16[])">
+            <summary>
+            Метод класса, реализующий дискретное преобразование Фурье. Метод реализован для 16-битных сэмлов.
+            </summary>
+            <param name="sampleArray">Массив сэмплов</param>
+            <returns>Спектр аудиосигнала в виде специальной структуры</returns>
+        </member>
+        <member name="M:Sample_Mask.Modules.DiscreteFourierTransformClass.ReverseFourierTransform16bit(Sample_Mask.Modules.Structures.Spectre,System.Int32)">
+            <summary>
+            Метод класса, реализующий обратное дискретное преобразование Фурье
+            На выходе получаем массив 16-битных сэмплов
+            </summary>
+            <param name="spectre">Спектр</param>
+            <param name="N">Длина исходного массива сэмплов</param>
+            <returns>Выходной массив сэмплов</returns>
+        </member>
+        <member name="T:Sample_Mask.Modules.ErrorShow">
+            <summary>
+            Модуль, отвечающий за вывод ошибок на экран
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.ErrorShow.Print(System.String,System.String,System.String)">
+            <summary>
+            Метод класса, непосредственно выводящий ошибку на экран
+            </summary>
+            <param name="Message">Сообщение об ошибке</param>
+            <param name="StackTrace">Трассировка стэка. Необязательный параметр.</param>
+            <param name="Source">Источник. Необязательный параметр.</param>
+        </member>
+        <member name="T:Sample_Mask.Modules.Handle">
+            <summary>
+            Модуль, непосредственно исполняющий команды пользователя
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.Handle.ConvertFileWithDialog">
+            <summary>
+            Метод, который отвечает за преобразование файла.
+            При этом файл открывается через диалоговое окно.
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.Handle.ConvertFileWithPath">
+            <summary>
+            Метод, который также отвечает за преобразование файла.
+            При этом путь к файлу указывается вручную.
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.Handle.NormalExit">
+            <summary>
+            Завершение работы программы
+            </summary>
+        </member>
+        <member name="T:Sample_Mask.Modules.Masking">
+            <summary>
+            Модуль, отвечающий за преобразование аудиофайла
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.Masking.#ctor(System.Int16[])">
+            <summary>
+            Конструктор класса для PCM 16 бит
+            </summary>
+            <param name="SampleArray">Массив сэмплов, считанных из аудиофайла</param>
+        </member>
+        <member name="M:Sample_Mask.Modules.Masking.Inverse(Sample_Mask.Modules.Structures.Spectre,System.Int32)">
+            <summary>
+            Метод класса, выполняющий инверсию спектра
+            </summary>
+            <param name="spectre">Спектр в исходном порядке</param>
+            <param name="lenght">Длина массивов в структуре</param>
+            <returns>Спектр в обратном порядке</returns>
+        </member>
+        <member name="M:Sample_Mask.Modules.Masking.BlockTransform(System.Int32)">
+            <summary>
+            Метод класса, производящий поблочное преобразование массива сэмплов
+            Преобрахование включает в себя такие операции с каждым блоком:
+            1. Преобразование Фурье на участке в 128 сэмплов, который, собственно и является блоком;
+            2. Инверсия спектра;
+            3. Обратное дискретное преобразование Фурье;
+            </summary>
+            <param name="pcm">Глубина кодирования в битах</param>
+        </member>
+        <member name="F:Sample_Mask.Modules.Masking.InputSampleArray_16bit">
+            <summary>
+            Поле класса, хранящее полученный на входе массив сэмплов с pcm 16 бит
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.Masking.FinalSampleArray16">
+            <summary>
+            Поле класса, хранящее выходной массив 16-битных сэмплов
+            </summary>
+        </member>
+        <member name="T:Sample_Mask.Modules.SampleParser">
+            <summary>
+            Модуль, отвечающий за чтение аудиофайла и извлечение сэмплов
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.#ctor(System.String)">
+            <summary>
+            Конструктор класса
+            </summary>
+            <param name="filePath">Путь к входному файлу</param>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.LoadFile">
+            <summary>
+            Загружает в память указанный файл
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.ProcessingChunk">
+            <summary>
+            Запускает обработку заголовка
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.GetChunk">
+            <summary>
+            Получает заголовок из двоичных данных
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.AnalyseChunk">
+            <summary>
+            Читает полученный заголовок и получает данные о файле
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.GetData">
+            <summary>
+            Записывает область данных, отсекая заголовок
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.Get16bitSamplesFromFile">
+            <summary>
+            Метод класса, отвечающий за извлечение сэмплов из аудиофайла с глубиной кодирования 16 бит
+            </summary>
+            <returns>Массив сэмплов</returns>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.Write16BitSamples(System.String,System.Int16[])">
+            <summary>
+            Преобразует 16-битные сэмплы в байты и записывает в новый файл со старым заголовком
+            </summary>
+            <param name="path">Путь к создаваемому файлу</param>
+            <param name="sampleArray">Массив сэмплов</param>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.Write24BitSamples(System.String,System.Double[])">
+            <summary>
+            Преобразует 24-битные сэмплы в байты и записывает в новый файл со старым заголовком
+            </summary>
+            <param name="path">Путь к создаваемому файлу</param>
+            <param name="sampleArray">Массив сэмплов</param>
+        </member>
+        <member name="M:Sample_Mask.Modules.SampleParser.Write32BitSamples(System.String,System.Double[])">
+            <summary>
+            Преобразует 32-битные сэмплы в байты и записывает в новый файл со старым заголовком
+            </summary>
+            <param name="path">Путь к создаваемому файлу</param>
+            <param name="sampleArray">Массив сэмплов</param>
+        </member>
+        <member name="F:Sample_Mask.Modules.SampleParser.Filename">
+            <summary>
+            Имя преобразуемого файла
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.SampleParser.AudiofileBinData">
+            <summary>
+            Сюда загружаются все двоичные данные входного аудиофайла. Дальше программа работает с этим массивом.
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.SampleParser.AudioBinDataWithoutChunk">
+            <summary>
+            Область данных аудиофайла, без заголовка
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.SampleParser.Samples_16_bit">
+            <summary>
+            Здесь хранится полученный массив сэмплов аудиофайла
+            c разрядностью (глубиной кодирования) 16 бит
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.SampleParser.Chunk">
+            <summary>
+            Cтруктура, содержащая заголовок аудиофайла и информацию о нём
+            </summary>
+        </member>
+        <member name="T:Sample_Mask.Modules.Structures">
+            <summary>
+            Вспомогательные структуры данных
+            </summary>
+        </member>
+        <member name="T:Sample_Mask.Modules.Structures.Spectre">
+            <summary>
+            Структура, хранящая спектр аудиосигнала на участке в 128 сэмплов
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.Structures.Spectre.a">
+            <summary>
+            Коэффициенты разложения по косинусу
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.Structures.Spectre.b">
+            <summary>
+            Коэффициенты разложения по синусу
+            </summary>
+        </member>
+        <member name="T:Sample_Mask.Modules.Structures.WavChunk">
+            <summary>
+            Структура, хранящая заголовок аудиофайла формата Wave
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.Structures.WavChunk.binary_data">
+            <summary>
+            Непосредственно двоичные данные заголовка
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.Structures.WavChunk.numOfChannels">
+            <summary>
+            Количество каналов в аудиозаписи (моно/стерео)
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.Structures.WavChunk.sampleRate">
+            <summary>
+            Частота дискретизации аудиофайла
+            </summary>
+        </member>
+        <member name="F:Sample_Mask.Modules.Structures.WavChunk.pcm">
+            <summary>
+            Глубина кодирования
+            </summary>
+        </member>
+        <member name="T:Sample_Mask.Modules.UI">
+            <summary>
+            Модуль, отвечающий за интерфейс пользователя.
+            Отвечает за диалог с пользователем, выполняет те или иные действия, указаные им.
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.UI.Start">
+            <summary>
+            Запуск диалога выбора действия
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.UI.AskCommand">
+            <summary>
+            Метод класса, непосредственно запрашивающий у пользователя команды
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Modules.UI.OpenFileWithDialog">
+            <summary>
+            Открывает файл с помощью диалога открытия файла
+            </summary>
+            <returns>Путь к преобразуемому файлу</returns>
+        </member>
+        <member name="M:Sample_Mask.Modules.UI.SaveFileWithDialog">
+            <summary>
+            Метод, запрашивающий у пользователя путь для сохранения результата преобразования
+            </summary>
+            <returns>Путь для сохранения выходного файла</returns>
+        </member>
+        <member name="M:Sample_Mask.Modules.UI.OpenFileAtPath">
+            <summary>
+            Запрашивает у пользователя путь к файлу и проверяет его корректность
+            </summary>
+            <returns>Путь к преобразуемому файлу</returns>
+        </member>
+        <member name="M:Sample_Mask.Modules.UI.SaveFileAtPath">
+            <summary>
+            Запрашивает у пользователя путь к файлу, который получится в результате преобразования входного файла
+            </summary>
+            <returns>Путь для сохранения выходного файла</returns>
+        </member>
+        <member name="T:Sample_Mask.Program">
+            <summary>
+            Главный модуль приложения
+            </summary>
+        </member>
+        <member name="M:Sample_Mask.Program.Main">
+            <summary>
+            Точка входа в программу
+            </summary>
+        </member>
+    </members>
+</doc>

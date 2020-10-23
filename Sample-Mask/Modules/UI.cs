@@ -11,6 +11,7 @@ namespace Sample_Mask.Modules
     public static class UI
     {
         #region Методы, отвечающие за инициализацию интерфейса и запрос команд
+
         /// <summary>
         /// Запуск диалога выбора действия
         /// </summary>
@@ -20,7 +21,7 @@ namespace Sample_Mask.Modules
 
             Console.WriteLine("Sample mask by l1ghth4t");
 
-            while (true) // бесконечный цикл
+            while (true)
                 AskCommand();
         }
 
@@ -31,7 +32,7 @@ namespace Sample_Mask.Modules
         {
             int command_number = 0;
 
-            Console.WriteLine("\nПрограмма готова к работе.\nДоступные действия:\n[1] Преобразовать файл, открытие через диалоговое окно\n[2] Преобразовать файл, путь к которому указывается вручную\n[3] Показать инструкцию\n[4] Выход\n");
+            Console.WriteLine("\nПрограмма готова к работе.\nДоступные действия:\n[1] Преобразовать файл, открытие через диалоговое окно\n[2] Преобразовать файл, путь к которому указывается вручную\n[3] Выход\n");
             Console.Write("Выберите действие: ");
 
             try
@@ -52,19 +53,15 @@ namespace Sample_Mask.Modules
                         break;
 
                     case 1:
-                        ConvertFileWithDialog();
+                        Handle.ConvertFileWithDialog(); // Открытие и сохранение файла через диалоговое окно
                         break;
 
                     case 2:
-                        ConvertFileWithPath();
+                        Handle.ConvertFileWithPath(); // Для любителей хардкора) Здесь пути прописываем вручную
                         break;
 
                     case 3:
-                        ShowManual();
-                        break;
-
-                    case 4:
-                        NormalExit();
+                        Handle.NormalExit(); // Выход
                         break;
 
                     default:
@@ -76,54 +73,6 @@ namespace Sample_Mask.Modules
             {
                 ErrorShow.Print(e.Message, e.StackTrace, e.Source);
             }
-        }
-
-        #endregion
-
-        #region Методы, отвечающие за непосредственное исполнение команд
-
-        /// <summary>
-        /// Метод, который отвечает за преобразование файла.
-        /// При этом файл открывается через диалоговое окно.
-        /// </summary>
-        private static void ConvertFileWithDialog()
-        {
-            // ...
-        }
-
-        /// <summary>
-        /// Метод, который также отвечает за преобразование файла.
-        /// При этом путь к файлу указывается вручную.
-        /// </summary>
-        private static void ConvertFileWithPath()
-        {
-            // ...
-        }
-
-        /// <summary>
-        /// Метод, отображающий мануал по программе
-        /// </summary>
-        private static void ShowManual()
-        {
-            string manual_text = "";
-
-            Console.ForegroundColor = ConsoleColor.Green;
-
-            Console.WriteLine("\n--- Справка ---\n");
-
-            Console.WriteLine(manual_text);
-
-            Console.WriteLine("\n--- Конец справки---\n");
-
-            Console.ForegroundColor = ConsoleColor.Gray;
-        }
-
-        /// <summary>
-        /// Завершение работы программы
-        /// </summary>
-        private static void NormalExit()
-        {
-            Environment.Exit(0);
         }
 
         #endregion
