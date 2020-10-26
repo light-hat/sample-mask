@@ -11,6 +11,11 @@
 Интерфейс программы позволяет открыть целевой файл как с помощью диалогового окна, так и прописав путь вручную. Приложение предложит три варианта: преобразовать файл, открыв его через даалоговие окно, преобразовать файл, прописав к нему путь вручную, и завершение работы программы. В первых двух вариантах программа предложит выбрать целевой файл в файловой системе вашего компьютера, и в случае успешного преобразования предложит выбрать путь его сохранения. Пример работы программы представлен ниже:
 
 ![Скриншот с примером работы программы](.github/Screen.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flight-hat%2Fsample-mask.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Flight-hat%2Fsample-mask?ref=badge_shield)
 
 ## Благодарности
 Данный проект является программной реализацией способа маскирования аналоговых речевых сигналов, описанного в патенте РФ №2546614.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flight-hat%2Fsample-mask.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Flight-hat%2Fsample-mask?ref=badge_large)
