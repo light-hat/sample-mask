@@ -1,16 +1,19 @@
 # Sample mask
-Приложение на .NET Core для шифрования звука в аудиофайлах.
+.NET Core application for encrypting audio in audio files.
 
-## Описание
-Данная утилита производит шифрование звука в аудиофайлах с помощью инверсии спектра аудиосигнала. Пока программа может работать только с аудиофайлами формата Wave. Глубина кодирования целевого файла 16 бит, моно, частота дискретизации рекомендуется не менее 44100 Гц. Чтобы расшифровать файл, нужно прогнать его через этот алгоритм ещё раз. Таким образом, информация в защищаемом аудиофайле превратится в набор шума, и файл при этом останется читаемым.
+## Description
+This utility encrypts audio in audio files by inverting the audio signal spectrum. For now, the program can only work with Wave format audio files. The coding depth of the target file is 16 bit, mono, the sampling rate is recommended not less than 44100 Hz. To decrypt the file, you need to run it through this algorithm again. Thus, the information in the protected audio file will turn into a set of noise, and the file will remain readable.
 
-## Как программа работает
-Приложение считывает данные из аудиофайла, преобразует двоичные данные в аудиосигнал. Над полученным сигналом выполняется дискретное преобразование Фурье, в результате которого получаются коэффициенты разложения. Далее полученные коэффициенты переставляются в обратном порядке. Затем выполняется обратное дискретное преобразование Фурье, после которого спектр аудиосигнала становится инверсным по отношению к исходному. Далее программа оцифровывает получившийся сигнал и записывает его в новый аудиофайл, оставляя при этом заголовок исходного.
+## How it works?
+The application reads data from an audio file, converts binary data into an audio signal. A discrete Fourier transform is performed on the received signal, as a result of which the expansion coefficients are obtained. Further, the obtained coefficients are rearranged in the reverse order. Then the inverse discrete Fourier transform is performed, after which the audio signal spectrum becomes inverse with respect to the original one. Next, the program digitizes the resulting signal and writes it to a new audio file, while keeping the original title.
 
-## Использование
-Интерфейс программы позволяет открыть целевой файл как с помощью диалогового окна, так и прописав путь вручную. Приложение предложит три варианта: преобразовать файл, открыв его через даалоговие окно, преобразовать файл, прописав к нему путь вручную, и завершение работы программы. В первых двух вариантах программа предложит выбрать целевой файл в файловой системе вашего компьютера, и в случае успешного преобразования предложит выбрать путь его сохранения. Пример работы программы представлен ниже:
+## Usage
+The program interface allows you to open the target file using a dialog box or by manually entering the path. The application will offer three options: convert the file by opening it through the dialog box, convert the file by manually entering the path to it, and exit the program. In the first two options, the program will offer to select the target file in the file system of your computer, and in case of successful conversion, it will offer to select the path to save it. An example of the program is shown below:
 
-![Скриншот с примером работы программы](.github/Screen.png)
+![Screenshot with the program](.github/Screen.png)
 
-## Благодарности
-Данный проект является программной реализацией способа маскирования аналоговых речевых сигналов, описанного в патенте РФ №2546614.
+## Thanks
+This project is a software implementation of the method for masking analog speech signals described in the patent of the Russian Federation №2546614.
+
+## Licensing
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flight-hat%2Fsample-mask.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Flight-hat%2Fsample-mask?ref=badge_large)
