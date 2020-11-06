@@ -1,5 +1,5 @@
 # Sample mask
-.NET Core application for encrypting audio in audio files.
+.NET Core sound encryption tool.
 
 ## Description
 This utility encrypts audio in audio files by inverting the audio signal spectrum. For now, the program can only work with Wave format audio files. The coding depth of the target file is 16 bit, mono, the sampling rate is recommended not less than 44100 Hz. To decrypt the file, you need to run it through this algorithm again. Thus, the information in the protected audio file will turn into a set of noise, and the file will remain readable.
@@ -15,5 +15,5 @@ The program interface allows you to open the target file using a dialog box or b
 ## Thanks
 This project is a software implementation of the method for masking analog speech signals described in the patent of the Russian Federation №2546614.
 
-## Licensing
+## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flight-hat%2Fsample-mask.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Flight-hat%2Fsample-mask?ref=badge_large)
